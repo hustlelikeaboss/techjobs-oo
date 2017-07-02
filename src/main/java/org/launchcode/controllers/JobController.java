@@ -63,29 +63,41 @@ public class JobController {
 
         newJob.setName(jobForm.getName());
 
-        for (Employer employer : jobForm.getEmployers()) {
-            if ( employer.getId() == jobForm.getEmployerId() ) {
-                newJob.setEmployer(employer);
-            }
-        }
+        Employer e = jobData.getEmployers().findById(jobForm.getEmployerId());
+        newJob.setEmployer(e);
 
-        for (Location location : jobForm.getLocations()) {
-            if ( location.getId() == jobForm.getLocationId() ) {
-                newJob.setLocation(location);
-            }
-        }
+        Location l = jobData.getLocations().findById(jobForm.getLocationId());
+        newJob.setLocation(l);
 
-        for (CoreCompetency coreCompetency : jobForm.getCoreCompetencies()) {
-            if ( coreCompetency.getId() == jobForm.getCoreCompetencyId()) {
-                newJob.setCoreCompetency(coreCompetency);
-            }
-        }
+        CoreCompetency c = jobData.getCoreCompetencies().findById(jobForm.getCoreCompetencyId());
+        newJob.setCoreCompetency(c);
 
-        for (PositionType positionType : jobForm.getPositionTypes()) {
-            if (positionType.getId() == jobForm.getPositionTypeId()) {
-                newJob.setPositionType(positionType);
-            }
-        }
+        PositionType p = jobData.getPositionTypes().findById(jobForm.getPositionTypeId());
+        newJob.setPositionType(p);
+
+//        for (Employer employer : jobForm.getEmployers()) {
+//            if ( employer.getId() == jobForm.getEmployerId() ) {
+//                newJob.setEmployer(employer);
+//            }
+//        }
+//
+//        for (Location location : jobForm.getLocations()) {
+//            if ( location.getId() == jobForm.getLocationId() ) {
+//                newJob.setLocation(location);
+//            }
+//        }
+//
+//        for (CoreCompetency coreCompetency : jobForm.getCoreCompetencies()) {
+//            if ( coreCompetency.getId() == jobForm.getCoreCompetencyId()) {
+//                newJob.setCoreCompetency(coreCompetency);
+//            }
+//        }
+//
+//        for (PositionType positionType : jobForm.getPositionTypes()) {
+//            if (positionType.getId() == jobForm.getPositionTypeId()) {
+//                newJob.setPositionType(positionType);
+//            }
+//        }
 
         return newJob;
     }
